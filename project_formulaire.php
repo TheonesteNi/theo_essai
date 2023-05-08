@@ -1,3 +1,34 @@
+<?php
+    //La connexion à la base de données
+    $servername ="localhost";
+    $username = "root";
+    $dbname = "PROJECT";
+
+    try{
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //echo "La connexion a bien etablie";
+    }
+    catch (PDOException $e){
+        echo "La connexion a échoué:" . $e->getMessage();
+    }
+    if(isset($_POST['Envoyer']))
+    {
+        $Nom = $_POST['Nom'];
+        $Prénom = $_POST['Prénom'];
+        $Téléphone = $_POST['Téléphone'];
+        $Adresse = $_POST['Adresse'];
+        $Email = $_POST['Email'];
+        $Genre = $_POST['Genre'];
+        $Civilité = $_POST['Civilité'];
+        $Date = $_POST['Date'];
+        $Couleur = $_POST['Couleur'];
+        $Langues = $_POST['Langues'];
+        $Relation = $_POST['Relation'];
+        $Commentaire = $_POST['Commentaire'];
+
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +141,7 @@
             </div>
         </div>
         <div id="flex_bb3">
-            <form action="">
+            <form action="" method="post">
               <fieldset>
                 <legend><h2>Je complète mes cordonnées</h2></legend>
                 <table>
@@ -148,15 +179,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <th><label>Date de remplissage du formulaire</label></th>
+                        <th><label>Date</label></th>
                         <td><input class="input" type="date"/></td>
                     </tr>
                     <tr>
-                        <th><label>Couleur préférée</label></th>
+                        <th><label>Couleur</label></th>
                         <td><input type="color"/></td>
                     </tr>
                     <tr>
-                        <th><label>Langues parlées</label></th>
+                        <th><label>Langues</label></th>
                         <td><input type="checkbox" value="Français"/>Français
                             <input type="checkbox" value="Anglais"/>Anglais
                             <input type="checkbox" value="Swahili"/>Swahili
@@ -169,7 +200,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <th><label>Relation entre mois et vous</label></th>
+                        <th><label>Relation</label></th>
                         <td><input type="radio" name="relation" value="Familiale"/>Familiale
                             <input type="radio" name="relation" value="Scolaire"/>Scolaire
                             <input type="radio" name="relation" value="Académique"/>Académique
